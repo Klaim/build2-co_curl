@@ -16,3 +16,7 @@ depends: * bpkg >= 0.16.0
 examples: co_curl-examples == $
 
 depends: libcurl >= 7.55
+
+build-exclude: **-emcc_**
+default-build-config: config.bin.lib=static
+
