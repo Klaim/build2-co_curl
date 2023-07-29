@@ -1,8 +1,13 @@
 libs =
-#import libs += libhello%lib{hello}
+import libs += co_curl%lib{co_curl}
 
-./: exe{co_curl-examples} doc{README.md} manifest
+./: doc{README.md} manifest
 
-exe{co_curl-examples}: {hxx ixx txx cxx}{*} $libs testscript
+for example_cpp : cxx{*}
+{
+    example_name = $name($example_cpp)
+    ./ : exe{$example_name}: $example_cpp $libs
+}
+
 
 cxx.poptions =+ "-I$out_root" "-I$src_root"

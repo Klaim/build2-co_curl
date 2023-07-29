@@ -12,3 +12,7 @@ email: mjklaim@gmail.com
 depends: * build2 >= 0.16.0
 depends: * bpkg >= 0.16.0
 #depends: libhello ^1.0.0
+
+examples: co_curl-examples == $
+
+depends: libcurl >= 7.55
