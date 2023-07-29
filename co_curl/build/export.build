@@ -1,0 +1,6 @@
+$out_root/
+{
+  include co_curl/
+}
+
+export $out_root/co_curl/$import.target

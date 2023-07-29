@@ -1,0 +1,3 @@
+import libs = co_curl%lib{co_curl}
+
+exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}

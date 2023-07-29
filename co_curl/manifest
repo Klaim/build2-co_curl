@@ -1,0 +1,14 @@
+: 1
+name: co_curl
+version: 0.1.0-a.0.z
+type: lib
+language: c++
+summary: co_curl C++ library
+license: other: proprietary ; Not free/open source.
+description-file: README.md
+url: https://example.org/co_curl
+email: mjklaim@gmail.com
+#build-error-email: mjklaim@gmail.com
+depends: * build2 >= 0.16.0
+depends: * bpkg >= 0.16.0
+#depends: libhello ^1.0.0
