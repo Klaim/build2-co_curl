@@ -9,5 +9,13 @@ for example_cpp : cxx{*}
     ./ : exe{$example_name}: $example_cpp $libs testscript
 }
 
+if($cxx.id == 'msvc')
+{
+	exe{lots-of-coroutines}:
+	{
+		cc.loptions += /STACK:10000000
+	}
+}
+
 
 cxx.poptions =+ "-I$out_root" "-I$src_root"
