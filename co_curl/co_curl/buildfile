@@ -2,13 +2,15 @@ intf_libs = # Interface dependencies.
 impl_libs = # Implementation dependencies.
 import impl_libs += libcurl%lib{curl}
 
-lib{co_curl}: {hxx ixx txx cxx}{** -version} hxx{version} cxx{version} $impl_libs $intf_libs
+lib{co_curl}: {hxx ixx txx cxx}{** -version} $impl_libs $intf_libs
+lib{co_curl}: hxx{version} # cxx{version}
 
 hxx{version}: in{version.hpp.in} $src_root/manifest
-cxx{version}: in{version.cpp.in} $src_root/manifest
-{
-  in.mode = lax
-}
+# cxx{version}: in{version.cpp.in} $src_root/manifest
+# {
+#   in.mode = lax
+#   # in.substitution = "${CO_CURL_VERSION}"@"$CO_CURL_VERSION$" # TODO: fix the version generation
+# }
 
 hxx{export}@./: cxx.importable = false
 

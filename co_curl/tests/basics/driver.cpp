@@ -1,35 +1,20 @@
-#include <sstream>
-#include <stdexcept>
-
-#include <co_curl/version.hpp>
 #include <co_curl/co_curl.hpp>
+#include <exception>
 
-#undef NDEBUG
-#include <cassert>
+auto fetch(std::string url) -> co_curl::task<std::string> {
+	auto handle = co_curl::easy_handle{url};
 
-int main ()
-{
-  using namespace std;
-  using namespace co_curl;
+	std::string output;
 
-  // Basics.
-  //
-  {
-    ostringstream o;
-    say_hello (o, "World");
-    assert (o.str () == "Hello, World!\n");
-  }
+	handle.write_into(output);
 
-  // Empty name.
-  //
-  try
-  {
-    ostringstream o;
-    say_hello (o, "");
-    assert (false);
-  }
-  catch (const invalid_argument& e)
-  {
-    assert (e.what () == string ("empty name"));
-  }
+	if (!co_await handle.perform()) {
+		throw std::runtime_error{"unable to download requested document"};
+	}
+
+	co_return output;
+}
+
+int main() {
+	std::cout << fetch("https://hanicka.net") << "\n";
 }
