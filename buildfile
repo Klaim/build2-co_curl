@@ -11,8 +11,8 @@ define workspace: alias
 workspace{init} :
 {{
   diag bdep $src_root
-  bdep init -d $src_root/ -C $src_root/build-msvc/ @msvc cc config.cxx=cl config.bin.lib=static --bpkg-option --trust-yes
-  bdep init -d $src_root/ -C $src_root/build-clang/ @clang cc config.cxx=clang++ config.bin.lib=static --bpkg-option --trust-yes
+  bdep init -d $src_root/ -C $src_root/build-msvc/ @msvc cc config.cxx=cl config.bin.lib=static
+  bdep init -d $src_root/ -C $src_root/build-clang/ @clang cc config.cxx=clang++ config.bin.lib=static
 }}
 
 workspace{clear}:
